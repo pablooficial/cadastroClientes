@@ -1,0 +1,170 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Gerenciador</li>
+  </ol>
+</nav>
+<div class="container">
+  <div class="card list-list">
+    <h5 class="card-header">Contrato de Dados</h5>
+    <button type="button" (click)="adicionarNovo(f)" class="btn btn-primary btn-sm adicionar" data-toggle="modal"
+      data-target="#exampleModal">
+      Adicionar </button>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">CEP</th>
+            <th scope="col">Logradouro</th>
+            <th scope="col">Bairro</th>
+            <th scope="col">Localidade</th>
+            <th scope="col">UF</th>
+            <th scope="col" style="margin-left: auto;"> Ações </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of lists">
+            <td>{{list.id}}</td>
+            <td>{{list.nome}}</td>
+            <td>{{list.cpf }}</td>
+            <td>{{list.cep }}</td>
+            <td>{{list.logradouro}}</td>
+            <td>{{list.bairro}}</td>
+            <td>{{list.localidade}}</td>
+            <td>{{list.uf}}</td>
+            <td>
+              <button type="button" (click)="editList(list)" class="btn btn-warning btn-sm" data-toggle="modal"
+                data-target="#exampleModal">
+                Editar </button>
+              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteList(list)">Deletar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Modal Inicio -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <small class="modal-title">Escreva todas as informações abaixo conforme
+            solicitado.</small>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card add-list">
+            <h5 class="card-header">Adicionar / Editar</h5>
+            <div class="card-body">
+              <form id="add-form" (ngSubmit)="f.form.valid && saveList(f)" #f="ngForm" novalidate>
+                <div class="form-group">
+                  <label for="nome">Nome</label>
+                  <input type="text" [(ngModel)]="list.nome" id="nome" name="nome" #nome="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }"
+                    placeholder="Digite o nome">
+                  <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+                    <div *ngIf="nome.errors.required">Nome é obrigatório</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cpf">CPF</label>
+                  <input type="text" mask="CPF_CNPJ" [(ngModel)]="list.cpf" id="cpf" name="cpf" #cpf="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }"
+                    placeholder="Digite o cpf">
+                  <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
+                    <div *ngIf="cpf.errors.required">CPF é obrigatório</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cep">CEP</label>
+                  <input type="text" mask="00.000-000" [(ngModel)]="list.cep" id="cep" name="cep" #cep="ngModel"
+                    required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && cep.invalid }"
+                    placeholder="Digite o cep">
+                  <div *ngIf="f.submitted && cep.invalid" class="invalid-feedback">
+                    <div *ngIf="cep.errors.required">CEP é obrigatório</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="logradouro">Logradouro</label>
+                  <input type="text" [(ngModel)]="list.logradouro" id="logradouro" name="logradouro"
+                    #logradouro="ngModel" required class="form-control"
+                    [ngClass]="{ 'is-invalid': f.submitted && logradouro.invalid }" placeholder="Digite o logradouro">
+                  <div *ngIf="f.submitted && logradouro.invalid" class="invalid-feedback">
+                    <div *ngIf="logradouro.errors.required">Logradouro é obrigatório</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="bairro">Bairro</label>
+                  <input type="text" [(ngModel)]="list.bairro" id="bairro" name="bairro" #bairro="ngModel" required
+                    class="form-control" [ngClass]="{ 'is-invalid': f.submitted && bairro.invalid }"
+                    placeholder="Digite o bairro">
+                  <div *ngIf="f.submitted && bairro.invalid" class="invalid-feedback">
+                    <div *ngIf="bairro.errors.required">Bairro é obrigatório</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="localidade">Localidade</label>
+                  <input type="text" [(ngModel)]="list.localidade" id="localidade" name="localidade"
+                    #localidade="ngModel" required class="form-control"
+                    [ngClass]="{ 'is-invalid': f.submitted && localidade.invalid }" placeholder="Digite a localidade">
+                  <div *ngIf="f.submitted && localidade.invalid" class="invalid-feedback">
+                    <div *ngIf="localidade.errors.required">Localidade é obrigatório</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="uf">UF</label>
+                  <select [(ngModel)]="list.uf" id="uf" name="uf" #uf="ngModel" required class="form-control"
+                    [ngClass]="{ 'is-invalid': f.submitted && uf.invalid }">
+                    <option selected disabled>Selecione um UF</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </select>
+                  <div *ngIf="f.submitted && uf.invalid" class="invalid-feedback">
+                    <div *ngIf="uf.errors.required">UF é obrigatório</div>
+                  </div>
+                </div>
+
+                <button type="reset" class="btn btn-secondary btn-add-list" (click)="cleanForm(f)">Apagar</button>
+                <button type="submit" class="btn btn-primary btn-add-list">Salvar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--FIM -->

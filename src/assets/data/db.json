@@ -1,0 +1,34 @@
+{
+  "lists": [
+    {
+      "nome": "PABLO WANIERY GONCALVES",
+      "cep": "38408372",
+      "localidade": "Uberlândia",
+      "cpf": "10271218614",
+      "logradouro": "rua amaro",
+      "bairro": "centro",
+      "uf": "MG",
+      "id": 30
+    },
+    {
+      "uf": "GO",
+      "nome": "PABLO WANIERY GONCALVES",
+      "cep": "38408372",
+      "localidade": "Goiania",
+      "cpf": "10271218614",
+      "logradouro": "rua amaro",
+      "bairro": "centro",
+      "id": 31
+    },
+    {
+      "nome": "Paulo Jose",
+      "cpf": "10271218614",
+      "cep": "38500000",
+      "logradouro": "Av joao naves",
+      "bairro": "Morumbi",
+      "localidade": "São Paulo",
+      "uf": "SP",
+      "id": 32
+    }
+  ]
+}
