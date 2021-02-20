@@ -7,7 +7,7 @@ git clone urldoprojeto.
 
 2- Executar:
   npm install.
-  npx json-server --watch db.json
+  npx json-server --watch src/assets/data/db.json
 3- Executar o jason serve com o comando abaixo: 
 json-server --watch src/assets/data/db.json
 
