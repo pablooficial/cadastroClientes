@@ -1,28 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { ListService } from './services/list.service';
-import { List } from './models/list';
-import { NgForm } from '@angular/forms';
-import { ValidateBrService } from 'angular-validate-br';
+import { Component, OnInit } from "@angular/core";
+import { ListService } from "./services/list.service";
+import { List } from "./models/list";
+import { NgForm } from "@angular/forms";
+import { ValidateBrService } from "angular-validate-br";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-
   list = {} as List;
   lists: List[];
+  filter;
 
-  constructor(private listService: ListService, private validateBrService: ValidateBrService) { }
+  constructor(
+    private listService: ListService,
+    private validateBrService: ValidateBrService
+  ) {}
 
   ngOnInit() {
     this.getLists();
   }
 
-
   // defini se um dado será criado ou atualizado
   saveList(form: NgForm) {
+    localStorage.setItem("form", this.list.nome); //Setando dado de usuario Simples no localStorage 
     if (this.list.id !== undefined) {
       this.listService.updateList(this.list).subscribe(() => {
         this.cleanForm(form);
@@ -43,6 +46,7 @@ export class AppComponent implements OnInit {
 
   // deleta um dado
   deleteList(list: List) {
+    localStorage.removeItem('form'); //Removendo nome do usuario no localStorage 
     var mensagem;
     var retorno = confirm("Você realmente quer deletar este item?");
     if (retorno == true) {
@@ -50,8 +54,7 @@ export class AppComponent implements OnInit {
       this.listService.deleteList(list).subscribe(() => {
         this.getLists();
       });
-    }
-    else {
+    } else {
       mensagem = "Você cancelou a operação";
     }
   }
@@ -72,4 +75,3 @@ export class AppComponent implements OnInit {
     this.list = {} as List;
   }
 }
-

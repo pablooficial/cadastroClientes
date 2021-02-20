@@ -1,34 +1,44 @@
 {
   "lists": [
     {
-      "nome": "PABLO WANIERY GONCALVES",
+      "nome": "Angelica Nascimento",
       "cep": "38408372",
-      "localidade": "Uberlândia",
-      "cpf": "10271218614",
+      "localidade": "Monte Carmelo",
+      "cpf": "051.324.880-30",
       "logradouro": "rua amaro",
-      "bairro": "centro",
+      "bairro": "Vila Nova",
       "uf": "MG",
       "id": 30
     },
     {
-      "uf": "GO",
-      "nome": "PABLO WANIERY GONCALVES",
+      "nome": "Bianca de Jesus",
       "cep": "38408372",
       "localidade": "Goiania",
-      "cpf": "10271218614",
-      "logradouro": "rua amaro",
+      "cpf": "045.107.300-20",
+      "logradouro": "Rua amaro",
       "bairro": "centro",
+      "uf": "GO",
       "id": 31
     },
     {
-      "nome": "Paulo Jose",
-      "cpf": "10271218614",
+      "nome": "Carlos Eduardo Alvez",
       "cep": "38500000",
+      "localidade": "São Paulo",
+      "cpf": "110.856.240-05",
       "logradouro": "Av joao naves",
       "bairro": "Morumbi",
-      "localidade": "São Paulo",
       "uf": "SP",
       "id": 32
+    },
+    {
+      "nome": "Paulo Andrade Dias Filho",
+      "cep": "03962170",
+      "localidade": "São Paulo",
+      "cpf": "10271218614",
+      "logradouro": "432423",
+      "bairro": "Centro",
+      "uf": "AP",
+      "id": 33
     }
   ]
 }

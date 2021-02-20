@@ -1,3 +1,5 @@
+ 
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -6,13 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule, MatDialogModule } from '@angular/material';
-import { NgxMaskModule } from 'ngx-mask'
+import {NgxMaskModule} from 'ngx-mask'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
   declarations: [
     AppComponent
-
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,8 @@ import { NgxMaskModule } from 'ngx-mask'
     BrowserAnimationsModule,
     MatSliderModule,
     MatDialogModule,
-    NgxMaskModule.forRoot(),
+    Ng2SearchPipeModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
